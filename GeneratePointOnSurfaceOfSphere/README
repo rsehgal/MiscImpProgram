@@ -2,4 +2,4 @@
 of required radius
 
 #To compile use following command
-g++ -std=c++11 -o rng2 rng2.cpp -lm
+g++ -std=c++11 -o generate  generate.cpp -lm
