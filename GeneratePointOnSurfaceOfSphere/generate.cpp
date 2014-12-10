@@ -54,14 +54,40 @@ void GetPoint(double &x, double &y, double &z){
   double sinphi  = std::sin(phi);
 
   // generate a random point uniform in area
-  double costheta = unifRand(-1., 1.);
-  double sintheta = std::sqrt(1. - (costheta*costheta));
+  double theta = unifRand(0, kPi/6);
+  double costheta = std::cos(theta);// unifRand(-1., 1.);
+  double sintheta = std::sin(theta);// std::sqrt(1. - (costheta*costheta));
 
   x=fR * sintheta * cosphi;
   y=fR * sintheta * sinphi;
   z=fR * costheta;
   
   
+}
+
+void GetDirection(double &x, double &y, double &z){
+   // double fR=9.0000000000002;
+    double fR=8.0;
+  double phi  = unifRand(0., 2.* kPi);
+  double cosphi  = std::cos(phi);
+  double sinphi  = std::sin(phi);
+
+  // generate a random point uniform in area
+  double theta = unifRand(kPi/6, kPi/3);
+  double costheta = std::cos(theta);// unifRand(-1., 1.);
+  double sintheta = std::sin(theta);// std::sqrt(1. - (costheta*costheta));
+
+  x=sintheta * cosphi;
+  y=sintheta * sinphi;
+  z=costheta;
+  
+  
+}
+
+double Mag(double x, double y, double z){
+
+    return std::sqrt(x*x + y*y + z*z);
+
 }
 
 int main()
@@ -77,6 +103,9 @@ int main()
     double x=0.0,y=0.0,z=0.0;
     GetPoint(x,y,z);
     std::cout.precision(15);
-    std::cout<<fixed<<x<<","<<y<<","<<z<<std::endl;
+    std::cout<<fixed<<"Point : "<<x<<","<<y<<","<<z<<std::endl;
+    GetDirection(x,y,z);
+    std::cout<<fixed<<"Direction : "<<x<<","<<y<<","<<z<<std::endl;
+    std::cout<<"Mag of Dir : "<<Mag(x,y,z)<<std::endl;
     return 0;
 }
