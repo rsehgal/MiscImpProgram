@@ -10,6 +10,21 @@
 
 #include <iostream>
 
+namespace Utilities{
+   template<typename T, typename U>
+   void Test(){
+	   std::cout << "==== Entered Tempalted Test of Utilities namespace ==== "<< std::endl;
+   }
+
+   template<>
+   void Test<float,float>(){
+   	   std::cout << "==== Entered FulluSpecialized Test of Utilities namespace ==== "<< std::endl;
+      }
+
+
+
+} //end of Utilities namespace
+
 template <class T>
 class MyTemplatedClass {
 public:
@@ -152,6 +167,8 @@ MyDualTemplatedClass<float,U>::~MyDualTemplatedClass() {
 template<class U>
 void MyDualTemplatedClass<float,U>::Test() {
 	std::cout<<" === Patial Specialialized Class For Float ===" << std::endl;
+	Utilities::Test<int,float>();
+	Utilities::Test<float,float>();
 }
 
 //----------------------------------------------------
