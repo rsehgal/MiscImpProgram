@@ -83,9 +83,9 @@ public:
 
 	//Adding some Template Method
 	template <class V>
-	void Foo();
+	static void Foo();
 
-	void Test();
+	static void Test();
 
 };
 
@@ -120,7 +120,7 @@ class MyDualTemplatedClass<int,U> {
 public:
 	MyDualTemplatedClass();
 	~MyDualTemplatedClass();
-	void Test();
+	static void Test();
 
 };
 
@@ -148,7 +148,10 @@ class MyDualTemplatedClass<float,U> {
 public:
 	MyDualTemplatedClass();
 	~MyDualTemplatedClass();
-	void Test();
+	static void Test();
+	//Adding some Template Method
+	template <class V>
+	static void Foo();
 
 };
 
@@ -169,6 +172,14 @@ void MyDualTemplatedClass<float,U>::Test() {
 	std::cout<<" === Patial Specialialized Class For Float ===" << std::endl;
 	Utilities::Test<int,float>();
 	Utilities::Test<float,float>();
+}
+
+template<class U>
+template<class V>
+void MyDualTemplatedClass<float,U>::Foo() {
+
+	MyDualTemplatedClass<U,U>::template Foo<V>();
+
 }
 
 //----------------------------------------------------

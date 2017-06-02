@@ -15,7 +15,10 @@ int main(){
 	tP.Test();
 	sP.Test();
 	dP.Test();
-
+	std::cout<<"\n\n---------------------------------------------------------------------------------" << std::endl;
+	std::cout<<"=== Now trying to call static function directly using class ===" << std::endl;
+	MyDualTemplatedClass<float,char>::Test();
+	MyDualTemplatedClass<float,char>::Foo<char>();
 	return 0;
 
 }
