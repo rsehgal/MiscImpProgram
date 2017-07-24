@@ -5,50 +5,50 @@
 #include <TH1F.h>
 using namespace std;
 
-class Name {
+class ObjectChecker {
       TH1F *fHist;
    public:
-      Name();
-      Name(string n);
+      ObjectChecker();
+      ObjectChecker(string n);
       TH1F* GetHist() const {return fHist;}
-      bool operator<(const Name& right)const; 
+      bool operator<(const ObjectChecker& right)const; 
       string get_name()const;
-      void CheckAndInsert(std::string objName);
-      std::set<Name> GetSet(){return NamesSet;}
+      void CheckAndInsert(std::string objObjectChecker);
+      std::set<ObjectChecker> GetSet(){return ObjectCheckersSet;}
    private:
       string name;             
-      std::set<Name> NamesSet;
+      std::set<ObjectChecker> ObjectCheckersSet;
 };
 
-void Name::CheckAndInsert(std::string objName){
-for (std::set<Name>::iterator it=NamesSet.begin(); it!=NamesSet.end(); ++it){
-if((*it).get_name() == objName)
+void ObjectChecker::CheckAndInsert(std::string objObjectChecker){
+for (std::set<ObjectChecker>::iterator it=ObjectCheckersSet.begin(); it!=ObjectCheckersSet.end(); ++it){
+if((*it).get_name() == objObjectChecker)
 {
     std::cout <<"Attempt to DUPLICATE ... the histogram with name : "<< (*it).GetHist()->GetName() << "  !!! " << std::endl;
-//    cout << "HistName : "<< (*it).GetHist()->GetName() << endl;
+//    cout << "HistObjectChecker : "<< (*it).GetHist()->GetObjectChecker() << endl;
     return ;
 }
 }
 
 std::cout<<"Inserting new Object..... " << std::endl;
-NamesSet.insert(Name(objName));
+ObjectCheckersSet.insert(ObjectChecker(objObjectChecker));
 
 }
 
-Name::Name(){}
+ObjectChecker::ObjectChecker(){}
 
-Name::Name(string n)
+ObjectChecker::ObjectChecker(string n)
 {
    name = n;
    fHist = new TH1F(n.c_str(),n.c_str(),100,0,100);
 }
 
-bool Name::operator<(const Name& right)const
+bool ObjectChecker::operator<(const ObjectChecker& right)const
 {
       return (this->name < right.name);
 }
 
-string Name::get_name()const
+string ObjectChecker::get_name()const
 {
       return name;
 }
@@ -56,15 +56,15 @@ string Name::get_name()const
 int main()
 {
 
-Name name;
-//set<Name>NamesSet;
+ObjectChecker name;
+//set<ObjectChecker>ObjectCheckersSet;
 
 
-//NamesSet.insert(Name("Patrick Star"));
-//NamesSet.insert(Name("Jason"));
-//NamesSet.insert(Name("Bob Marl"));
-//NamesSet.insert(Name("Greg"));
-//set<Name>::iterator pos ; 
+//ObjectCheckersSet.insert(ObjectChecker("Patrick Star"));
+//ObjectCheckersSet.insert(ObjectChecker("Jason"));
+//ObjectCheckersSet.insert(ObjectChecker("Bob Marl"));
+//ObjectCheckersSet.insert(ObjectChecker("Greg"));
+//set<ObjectChecker>::iterator pos ; 
 
 std::vector<std::string> nameVect;
 nameVect.push_back("Raman");
@@ -75,34 +75,34 @@ for(int i = 0 ; i < nameVect.size() ; i++){
 string cusname = nameVect[i];
 
 /*
-for (std::set<Name>::iterator it=NamesSet.begin(); it!=NamesSet.end(); ++it){
-//if ( NamesSet.count(cusname) == 1 )
+for (std::set<ObjectChecker>::iterator it=ObjectCheckersSet.begin(); it!=ObjectCheckersSet.end(); ++it){
+//if ( ObjectCheckersSet.count(cusname) == 1 )
 if((*it).get_name() == cusname)
 {
   //  cout << cusname << " exists in set"<<endl;
-    std::set<Name>::iterator it = NamesSet.begin();
-    cout << "HistName : "<< (*it).GetHist()->GetName() << endl;
+    std::set<ObjectChecker>::iterator it = ObjectCheckersSet.begin();
+    cout << "HistObjectChecker : "<< (*it).GetHist()->GetObjectChecker() << endl;
     return 0;
 }
 }
 */
 
-//NamesSet.insert(Name(cusname));
+//ObjectCheckersSet.insert(ObjectChecker(cusname));
 name.CheckAndInsert(cusname);
 
 }
 
-//NamesSet.insert(Name("raman"));
+//ObjectCheckersSet.insert(ObjectChecker("raman"));
 name.CheckAndInsert("raman");
 
 std::cout<<"------------------ Trying to duplicate -------------------" << std::endl;
-//NamesSet.insert(Name("Raman"));
+//ObjectCheckersSet.insert(ObjectChecker("Raman"));
 name.CheckAndInsert("Raman");
 
-std::set<Name> NamesSet = name.GetSet();
+std::set<ObjectChecker> ObjectCheckersSet = name.GetSet();
 
 std::cout<<"-------------- Printing All histograms names -------------" << std::endl;
-for (std::set<Name>::iterator it=NamesSet.begin(); it!=NamesSet.end(); ++it){
+for (std::set<ObjectChecker>::iterator it=ObjectCheckersSet.begin(); it!=ObjectCheckersSet.end(); ++it){
 std::cout<<"HistName : "<< (*it).GetHist()->GetName() << std::endl;
 }
 
