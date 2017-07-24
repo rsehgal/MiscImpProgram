@@ -1,0 +1,8 @@
+This example exist.cpp, demonstrate and example to check if an object exist or not, and create objects only if they does not exist.
+Here we have used ROOT histogram also.
+
+In order to compile use following command
+output1=root-config --libs
+output2=root-config --cflags
+g++ -o exist exist.cpp output1 output2
+
