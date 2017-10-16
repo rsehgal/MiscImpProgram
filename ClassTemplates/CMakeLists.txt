@@ -48,4 +48,5 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc)
 file(GLOB headers ${headers} ${CMAKE_CURRENT_SOURCE_DIR}/inc/*.h)
 file(GLOB headers ${sources} ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 add_executable(main ${CMAKE_CURRENT_SOURCE_DIR}/test/main.cpp ${sources})
+add_executable(main2 ${CMAKE_CURRENT_SOURCE_DIR}/test/main2.cpp ${sources})
 

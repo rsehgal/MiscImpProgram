@@ -1,0 +1,9 @@
+Added a new class MyTemplatedClass2 and the corresponding test program which shows how to define a templated class
+member function definition in separate file.
+
+Here we have one templated class declared in TemplatedClass2.h file
+and the definition of Constructor and other funcions of class is given in TemplatedClass2.cpp
+
+A Test program main2.cpp also added to show the demo.
+
+
